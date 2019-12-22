@@ -9,7 +9,7 @@ exports.signup = (req, res) => {
   user.save((err, user) => {
     if (err) {
       return res.status(400).json({
-        err: errorHandler(err)
+        err: "Email is taken"
       });
     }
     user.salt = undefined;
@@ -32,7 +32,7 @@ exports.signin = (req, res) => {
     // if user is found, make sure email and password match
     // create authenticate method in user model
     if (!user.authenticate(password)) {
-      return res.json(401).json({
+      return res.status(401).json({
         error: "Email and password do not match"
       });
     }

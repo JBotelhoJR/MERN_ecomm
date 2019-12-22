@@ -3,7 +3,7 @@ exports.userSignupValidator = (req, res, next) => {
   req
     .check("email", "Email must be between 3 and 32 characters")
     .matches(/.+\@.+\..+/)
-    .withMessage("Email must contain @")
+    .withMessage("Check email format")
     .isLength({
       min: 4,
       max: 32
